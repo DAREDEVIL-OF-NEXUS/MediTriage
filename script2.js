@@ -1,3 +1,5 @@
+const API_BASE = "https://meditriage-dum7.onrender.com";
+
 const symptomList = document.getElementById("symptomList");
 const searchBar = document.getElementById("searchBar");
 const analyzeBtn = document.getElementById("analyzeBtn");
@@ -36,7 +38,7 @@ async function loadSymptoms() {
   statusEl.textContent = "Loading symptoms…";
 
   try {
-    const res = await fetch("http://127.0.0.1:5000/symptoms");
+    const res = await fetch(`${API_BASE}/symptoms`);
     const data = await res.json();
 
     ALL_SYMPTOMS = data.symptoms || [];
@@ -48,7 +50,7 @@ async function loadSymptoms() {
     statusEl.textContent = "";
   } catch (err) {
     console.error(err);
-    statusEl.textContent = "❌ Failed to load symptoms. Is backend running?";
+    statusEl.textContent = "❌ Failed to load symptoms. Backend may be sleeping—refresh in 30–60s.";
   }
 }
 
@@ -78,7 +80,7 @@ analyzeBtn.addEventListener("click", async () => {
   analyzeBtn.disabled = true;
 
   try {
-    const res = await fetch("http://127.0.0.1:5000/predict", {
+    const res = await fetch(`${API_BASE}/predict`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ symptoms: selected })
@@ -95,7 +97,7 @@ analyzeBtn.addEventListener("click", async () => {
     window.location.href = "results.html";
   } catch (err) {
     console.error(err);
-    alert("Backend error. Check Flask terminal for details.");
+    alert("Backend error. If Render is on Free tier, it may take ~50s to wake up. Try again.");
     statusEl.textContent = "";
   } finally {
     analyzeBtn.disabled = false;

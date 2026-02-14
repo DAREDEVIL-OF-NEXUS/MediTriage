@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symptom Checker | MediTriage</title>
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">MediTriage</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="checkout.html" class="active">Symptom Checker</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+  </nav>
+
+  <header class="checker-hero">
+    <h1>AI Symptom Checker</h1>
+    <p>Select symptoms you’re experiencing. Then click <b>Analyze</b>.</p>
+  </header>
+
+  <main class="checker-wrap">
+    <div class="toolbar">
+      <input id="searchBar" class="search" type="text" placeholder="Search symptom (e.g., cough, fever)..." />
+      <div class="count"><span id="selectedCount">0</span> selected</div>
+      <button id="clearBtn" class="btn-lite" type="button">Clear</button>
+    </div>
+
+    <div id="symptomList" class="symptom-grid"></div>
+
+    <div class="actions">
+      <button id="analyzeBtn" class="btn-primary" type="button">Analyze Symptoms</button>
+      <div id="status" class="status"></div>
+    </div>
+
+    <p class="note">⚠ This tool is for awareness only. If symptoms are severe, seek medical care.</p>
+  </main>
+
+  <footer class="footer">© 2026 MediTriage | DTU CSE Students</footer>
+
+  <script src="script2.js"></script>
+</body>
+</html>

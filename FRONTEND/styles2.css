@@ -1,0 +1,56 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
+:root{--nav:#0a3d62;--shadow:0 10px 25px rgba(0,0,0,.12);--muted:#55657a}
+body{background:#f4f7fb;color:#0b1220}
+
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:16px 36px;background:var(--nav);color:#fff;position:sticky;top:0}
+.logo{font-weight:800;font-size:22px}
+.nav-links{list-style:none;display:flex;gap:22px}
+.nav-links a{color:#fff;text-decoration:none;opacity:.92}
+.nav-links a.active{border-bottom:2px solid #74ebd5;padding-bottom:4px}
+
+.checker-hero{padding:50px 18px;text-align:center;background:linear-gradient(120deg,#74ebd5,#acb6e5)}
+.checker-hero h1{font-size:40px}
+.checker-hero p{margin-top:10px;opacity:.85}
+
+.checker-wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
+
+.toolbar{
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:14px
+}
+.search{flex:1;min-width:240px;padding:12px 14px;border-radius:12px;border:1px solid #d6dde8;outline:none}
+.count{font-weight:800;color:var(--nav)}
+.btn-lite{padding:10px 14px;border-radius:12px;border:1px solid #d6dde8;background:#f7f9ff;cursor:pointer}
+
+.symptom-grid{
+  margin-top:16px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:12px
+}
+.symptom-card{
+  background:#fff;border-radius:16px;box-shadow:var(--shadow);
+  padding:14px;cursor:pointer;border:2px solid transparent;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  transition:.2s
+}
+.symptom-card:hover{transform:translateY(-2px)}
+.symptom-card .name{font-weight:900}
+.symptom-card .tag{font-size:12px;color:var(--muted)}
+.symptom-card.selected{border-color:var(--nav);background:#eef6ff}
+
+.checkmark{
+  width:24px;height:24px;border-radius:8px;border:2px solid #c9d6ea;
+  display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;
+  background:#c9d6ea;transition:.2s
+}
+.symptom-card.selected .checkmark{background:var(--nav);border-color:var(--nav)}
+
+.actions{margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn-primary{
+  padding:12px 18px;border-radius:14px;border:none;cursor:pointer;
+  background:var(--nav);color:#fff;font-weight:900;box-shadow:var(--shadow)
+}
+.status{color:var(--muted);font-weight:700}
+.note{margin-top:16px;color:#334;opacity:.85}
+
+.footer{background:var(--nav);color:#fff;text-align:center;padding:18px}

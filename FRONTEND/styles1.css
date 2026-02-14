@@ -1,0 +1,43 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
+:root{
+  --nav:#0a3d62; --muted:#55657a; --shadow:0 10px 25px rgba(0,0,0,.12);
+  --grad1:#74ebd5; --grad2:#acb6e5;
+}
+body{background:#f5f7fb;color:#0b1220}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:16px 36px;background:var(--nav);color:#fff;position:sticky;top:0}
+.logo{font-weight:800;font-size:22px}
+.nav-links{list-style:none;display:flex;gap:22px}
+.nav-links a{color:#fff;text-decoration:none;opacity:.92}
+.nav-links a.active{border-bottom:2px solid #74ebd5;padding-bottom:4px}
+
+.about-hero{padding:80px 18px;text-align:center;background:linear-gradient(120deg,var(--grad1),var(--grad2))}
+.about-hero h1{font-size:42px}
+.about-hero p{margin-top:10px;color:#0b1220;opacity:.85}
+
+.about-content{max-width:1100px;margin:0 auto;padding:56px 18px;display:grid;gap:22px}
+.block{display:grid;grid-template-columns:380px 1fr;gap:22px;align-items:center;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px}
+.block.reverse{grid-template-columns:1fr 380px}
+.block img{width:100%;height:240px;object-fit:cover;border-radius:14px}
+.block h2{color:var(--nav);margin-bottom:10px}
+.block p{color:var(--muted);line-height:1.5}
+
+.panel{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px}
+.panel h2{color:var(--nav)}
+.panel p{color:var(--muted);margin-top:8px;line-height:1.5}
+.mini-gallery{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.mini-gallery img{width:100%;height:140px;object-fit:cover;border-radius:14px;box-shadow:var(--shadow)}
+
+.disclaimer{background:#fff3f3;border-left:6px solid #d11;border-radius:14px;box-shadow:var(--shadow);padding:18px}
+.disclaimer h2{color:#b10}
+.disclaimer p{margin-top:8px;color:#444;line-height:1.5}
+
+.footer{background:var(--nav);color:#fff;text-align:center;padding:18px;margin-top:22px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:.5s}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .block{grid-template-columns:1fr}
+  .block.reverse{grid-template-columns:1fr}
+}

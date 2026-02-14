@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results | MediTriage</title>
+  <link rel="stylesheet" href="styles3.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">MediTriage</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="checkout.html">Symptom Checker</a></li>
+      <li><a href="results.html" class="active">Results</a></li>
+    </ul>
+  </nav>
+
+  <header class="results-hero">
+    <h1>Your AI Health Summary</h1>
+    <p>Based on the symptoms you selected</p>
+  </header>
+
+  <main class="results-wrap">
+    <div class="grid">
+      <section class="card">
+        <h2>Selected Symptoms</h2>
+        <ul id="symptomsUl" class="list"></ul>
+      </section>
+
+      <section class="card accent">
+        <h2>Predicted Condition</h2>
+        <div id="predBox" class="big"></div>
+        <div id="metaBox" class="meta"></div>
+      </section>
+
+      <section class="card green">
+        <h2>Recommended Precautions</h2>
+        <ul id="precUl" class="list"></ul>
+      </section>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="checkout.html">Check Again</a>
+      <button class="btn ghost" id="clearBtn" type="button">Clear Result</button>
+    </div>
+
+    <div class="disclaimer">
+      ⚠ MediTriage is for awareness only and is not a substitute for professional medical advice.
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 MediTriage | DTU CSE Students</footer>
+  <script src="script3.js"></script>
+</body>
+</html>

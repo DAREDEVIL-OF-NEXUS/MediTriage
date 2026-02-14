@@ -1,10 +1,24 @@
+import os
 import joblib
 import numpy as np
+import subprocess
 
-model = joblib.load("model.pkl")
-feature_names = joblib.load("features.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-feature_set = set(feature_names)
+MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
+FEATURES_PATH = os.path.join(BASE_DIR, "features.pkl")
+
+def ensure_model_exists():
+    # If model files not found, train them
+    if not (os.path.exists(MODEL_PATH) and os.path.exists(FEATURES_PATH)):
+        print("⚠ model.pkl / features.pkl not found. Training model now...")
+        subprocess.check_call(["python", os.path.join(BASE_DIR, "train_model.py")])
+        print("✅ Model trained on server.")
+
+ensure_model_exists()
+
+model = joblib.load(MODEL_PATH)
+feature_names = joblib.load(FEATURES_PATH)
 
 def _clean(sym: str) -> str:
     return str(sym).strip().lower().replace(" ", "_")
@@ -13,8 +27,6 @@ def predict_disease(symptom_list):
     x = np.zeros(len(feature_names), dtype=int)
 
     cleaned = [_clean(s) for s in symptom_list if str(s).strip()]
-    # For each cleaned symptom, activate any feature that ends with "_<symptom>"
-    # Example feature: "Symptom_3_abdominal_pain"
     for sym in cleaned:
         suffix = "_" + sym
         for i, fname in enumerate(feature_names):
@@ -22,8 +34,8 @@ def predict_disease(symptom_list):
                 x[i] = 1
 
     x = x.reshape(1, -1)
-
     pred = model.predict(x)[0]
+
     if hasattr(model, "predict_proba"):
         conf = float(np.max(model.predict_proba(x)[0]) * 100.0)
     else:
